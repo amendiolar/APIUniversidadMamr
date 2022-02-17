@@ -1,0 +1,36 @@
+2022-02-16 12:18:39,619 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2022-02-16 12:18:39,623 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-02-16 12:18:40,116 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-16 12:18:40,116 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-16 12:18:40,431 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-16 12:18:40,658 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2022-02-16 12:18:40,679 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-9081"]
+2022-02-16 12:18:40,685 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 9081 (http) with context path '/api/v1/universidad'
+2022-02-16 12:18:40,710 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started ApiUniversidadMApplication in 1.964 seconds (JVM running for 1007.817)
+2022-02-16 12:18:40,712 INFO org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2022-02-16 12:18:53,054 INFO org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(28)-127.0.0.1] Application shutdown requested.
+2022-02-16 12:18:53,072 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [RMI TCP Connection(28)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-16 12:18:53,074 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(28)-127.0.0.1] HikariPool-3 - Shutdown initiated...
+2022-02-16 12:18:53,077 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(28)-127.0.0.1] HikariPool-3 - Shutdown completed.
+2022-02-16 12:21:27,424 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2022-02-16 12:21:27,436 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting ApiUniversidadMApplication using Java 17 on LAPTOP-ENK3FB65 with PID 22680 (C:\WorkspaceSTS\APIUniversidadM\target\classes started by 002292661 in C:\WorkspaceSTS\APIUniversidadM)
+2022-02-16 12:21:27,437 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2022-02-16 12:21:27,507 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-02-16 12:21:27,507 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-02-16 12:21:29,163 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-16 12:21:29,261 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 80 ms. Found 2 JPA repository interfaces.
+2022-02-16 12:21:30,297 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 9081 (http)
+2022-02-16 12:21:30,314 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-9081"]
+2022-02-16 12:21:30,315 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2022-02-16 12:21:30,315 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-02-16 12:21:30,440 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2022-02-16 12:21:30,441 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2932 ms
+2022-02-16 12:21:30,640 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-16 12:21:30,722 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.33
+2022-02-16 12:21:30,927 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-16 12:21:31,104 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2022-02-16 12:21:31,363 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2022-02-16 12:21:31,416 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-02-16 12:21:33,234 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-16 12:21:33,247 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-16 12:21:34,428 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
