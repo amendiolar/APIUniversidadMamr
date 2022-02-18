@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ibm.academia.restapi.universidad.excepciones.NotFoundException;
 import com.ibm.academia.restapi.universidad.modelo.entidades.Persona;
@@ -56,9 +58,43 @@ public class PersonaController
 		Optional<Persona> oPersona = personaDao.buscarPorId(personaId);
 		
 		if(!oPersona.isPresent())
-			throw new NotFoundException("La persona con ID %d no existen", personaId);
+			throw new NotFoundException(String.format("La persona con ID %d no existen",personaId));
 			personaDao.eliminarPorId(oPersona.get().getId());
 		return new ResponseEntity<String>("Persona ID: " + personaId + " se elimino satisfactoriamente", HttpStatus.NO_CONTENT);
 	}
 	
+	@PutMapping("/persona/actualizar/personaId/{perosnaId}")
+	public ResponseEntity<?> actualizarPersona(@PathVariable Long personaId, @RequestBody Persona persona)
+	{
+		Persona personaActualizado = ((PersonaDAO) personaDao).actualizar(personaId, persona);
+		return new ResponseEntity<Persona>(personaActualizado, HttpStatus.OK);
+	}
+	
+	@GetMapping("/persona/buscar/{nombre,apellido}")
+	public ResponseEntity<?>buscarPorNombreYApellido(@PathVariable String nombre, @PathVariable String apellido)
+	{
+		Optional<Persona> oPersona = personaDao.buscarPorNombreYApellido(nombre, apellido);
+		if(!oPersona.isPresent())
+			throw new NotFoundException(String.format("La persona con nombre %s y apellido %s no existe", nombre,apellido));
+		return new ResponseEntity<Persona>(oPersona.get(), HttpStatus.OK);
+	}
+	
+	@GetMapping("/persona/{dni}")
+	public ResponseEntity<?> buscarPorDni(@PathVariable String dni)
+	{
+		Optional<Persona> oPersona = personaDao.buscarPorDni(dni);
+		
+		if(!oPersona.isPresent())
+			throw new NotFoundException(String.format("Persona con dni %d no existe", dni));
+		return new ResponseEntity<Persona>(oPersona.get(),HttpStatus.OK);
+	}
+	
+	@GetMapping("/persona/buscar/{apellido}")
+	public ResponseEntity<?>buscarPersonaPorApellido(@PathVariable String apellido)
+	{
+		List<Persona> personas = (List<Persona>) personaDao.buscarPersonaPorApellido(apellido);;
+		if(personas.isEmpty())
+			throw new NotFoundException("No existen personas con ese apellido");
+		return new ResponseEntity<List<Persona>>(personas,HttpStatus.OK);
+	}
 }
