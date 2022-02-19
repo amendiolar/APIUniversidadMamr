@@ -6,13 +6,16 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.swing.text.StringContent;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,11 +24,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ibm.academia.restapi.universidad.excepciones.NotFoundException;
 import com.ibm.academia.restapi.universidad.modelo.dto.CarreraDTO;
 import com.ibm.academia.restapi.universidad.modelo.entidades.Carrera;
+import com.ibm.academia.restapi.universidad.modelo.entidades.Persona;
 import com.ibm.academia.restapi.universidad.modelo.mapper.CarreraMapper;
 import com.ibm.academia.restapi.universidad.servicios.CarreraDAO;
 
@@ -52,6 +57,7 @@ public class CarreraController
 		@ApiResponse(code = 200, message = "Endpoint ejecutado satisfactoriamente"),
 		@ApiResponse(code = 404, message = "No hay elementos en la base de datos")
 	})
+	
 	@GetMapping("/carreras/lista")
 	public List<Carrera> listarTodas()
 	{
@@ -155,5 +161,32 @@ public class CarreraController
 				.map(CarreraMapper::mapCarrera)
 				.collect(Collectors.toList());
 		return new ResponseEntity<List<CarreraDTO>>(listaCarreras, HttpStatus.OK);
+	}
+	
+	@GetMapping("/carreras/contains/{nombre}")
+	public List<Carrera> findCarrerasByNombreContains(String nombre)
+	{
+		List<Carrera> carreras = (List<Carrera>) carreraDao.findCarrerasByNombreContains(nombre);
+		if(!carreras.contains(nombre))
+			throw new NotFoundException(String.format("La carrera  no existe"));
+		return carreras;
+	}
+	
+	@PutMapping("/profesor/asociar-carrera")
+	public ResponseEntity<?> asignarCarreraprofesor(@RequestParam Long carreraId, @RequestParam(name = "profesor_id") Long profesorId)
+	{
+		Persona alumno = ((ProfesorDAO)profesorDao).asociarCarreraProfesor(carreraId, profesorId); 
+		return new ResponseEntity<Persona>(profesor, HttpStatus.OK);
+	}
+
+
+	
+	@GetMapping("/carreras/profesor/{nombre, apellido}")
+	public List<Carrera> findCarrerasByNombreApellido(String nombre, String apellido)
+	{
+		List<Carrera> carreras = (List<Carrera>) carreraDao.findCarrerasByNombreApellido(nombre, apellido);
+		if(!carreras.contains(nombre) && !carreras.contains(apellido))
+			throw new NotFoundException(String.format("La carrera  no existe"));
+		return carreras;
 	}
 }
